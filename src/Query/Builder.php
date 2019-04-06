@@ -62,7 +62,7 @@ class Builder extends IlluminateQueryBuilder {
 	 */
     public $operators = array(
         '+', '-', '*', '/', '%', '^',          // Mathematical
-        '=', '!=', '<>', '<', '>', '<=', '>=',       // Comparison
+        '=', '<>', '<', '>', '<=', '>=',       // Comparison
         'is null', 'is not null',
         'and', 'or', 'xor', 'not',             // Boolean
         'in', '[x]', '[x .. y]',               // Collection
@@ -307,7 +307,10 @@ class Builder extends IlluminateQueryBuilder {
 		// we will set the operators to '=' and set the values appropriately.
 		if ( ! in_array(mb_strtolower($operator), $this->operators, true))
 		{
-			list($value, $operator) = array($operator, '=');
+			if ($operator == '!=')
+				list($value, $operator) = array($operator, '<>');
+			else
+				list($value, $operator) = array($operator, '=');
 		}
 
 		// If the value is a Closure, it means the developer is performing an entire
