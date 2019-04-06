@@ -62,7 +62,7 @@ class Builder extends IlluminateQueryBuilder {
 	 */
     public $operators = array(
         '+', '-', '*', '/', '%', '^',          // Mathematical
-        '=', '<>', '<', '>', '<=', '>=',       // Comparison
+        '=', '!=', '<>', '<', '>', '<=', '>=',       // Comparison
         'is null', 'is not null',
         'and', 'or', 'xor', 'not',             // Boolean
         'in', '[x]', '[x .. y]',               // Collection
